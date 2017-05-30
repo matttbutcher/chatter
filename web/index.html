@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<!--
+To change this license header, choose License Headers in Project Properties.
+To change this template file, choose Tools | Templates
+and open the template in the editor.
+-->
+<html>
+    <head>
+        
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
+<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/css/bootstrap.min.css" integrity="sha384-BVYiiSIFeK1dGmJRAkycuHAHRg32OmUcww7on3RYdg4Va+PmSTsz/K68vbdEjh4u" crossorigin="anonymous">
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.7/js/bootstrap.min.js" integrity="sha384-Tc5IQib027qvyjSMfHjOMaLkfuWVxZxUPnCJA7l2mCWNIpG9mGCD8wGNIcPD7Txa" crossorigin="anonymous"></script>
+
+
+  <!-- Latest compiled and minified CSS -->
+
+        <title>Chatter: Messaging Website  sdfsd</title>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <script>
+
+            $(document).ready(function () {
+                console.log("ready!");
+
+                $("#submit").click(function () {
+                    console.log("submit button clicked");
+                    $.post("login",
+                            {
+                                username: $("#username").val(),
+                                password: $("#password").val()
+                            },
+                            function (data, status) {
+                                //alert("Data: " + data + "\nStatus: " + status);
+                                
+                                var newJSON = JSON.parse(data);
+                                console.log(newJSON.username + " " + newJSON.password);
+                            });
+                });
+
+            });
+
+
+        </script>
+    </head>
+    <body>
+        <div class="container">
+            <header>
+                <h1>Chatter</h1>
+            </header>
+
+            <form>
+                <h3>Username:</h3>
+                <br>
+                <input type="text" id="username" value="">
+                <br>
+                <h3>Password: </h3>
+                <br>
+                <input type="text" id="password" value="">
+                <br>
+            </form>
+            <br>
+            <button id="submit">Submit</button>
+        </div>
+    </body>
+</html>
